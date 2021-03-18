@@ -9,12 +9,12 @@ RSpec.describe "Creating a new user: " do
     it "has a button to add a user" do
       visit company_path(@company)
 
-      within(".header") do
+      within("header") do
         expect(page).to have_button("Add User")
       end
     end
 
-    xit "redirects me to the user new page when I click 'Add user'" do
+    it "redirects me to the user new page when I click 'Add user'" do
       visit company_path(@company)
 
       click_button("Add user")
