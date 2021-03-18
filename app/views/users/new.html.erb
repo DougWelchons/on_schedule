@@ -1,7 +1,7 @@
 <h1>Create a new User</h1>
 
 <div class="form">
-  <%= form_with model: @user do |form| %>
+  <%= form_with url: company_users_path(@company), method: :post, local: true do |form| %>
     <%= form.label "First Name" %>
     <%= form.text_field :first_name %>
     <%= form.label "Last Name" %>
