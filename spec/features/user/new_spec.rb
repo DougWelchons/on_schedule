@@ -22,4 +22,17 @@ RSpec.describe "Creating a new user: " do
       expect(current_path).to eq(new_company_user_path(@company))
     end
   end
+
+  describe "When I visit the users new page it " do
+    it "shows a form to create a new user" do
+      visit new_company_user_path(@company)
+
+      within(".form") do
+        expect(page).to have_field(:first_name)
+        expect(page).to have_field(:last_name)
+        expect(page).to have_field(:email)
+        expect(page).to have_field(:password)
+      end
+    end
+  end
 end
