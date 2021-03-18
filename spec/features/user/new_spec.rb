@@ -17,7 +17,7 @@ RSpec.describe "Creating a new user: " do
     it "redirects me to the user new page when I click 'Add user'" do
       visit company_path(@company)
 
-      click_button("Add user")
+      click_button("Add User")
 
       expect(current_path).to eq(new_company_user_path(@company))
     end
