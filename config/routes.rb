@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create]
   end
 
-  get "/login", to: "user#login_form"
+  get "/login", to: "users#login_form"
 end
