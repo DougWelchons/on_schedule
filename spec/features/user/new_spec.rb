@@ -35,5 +35,25 @@ RSpec.describe "Creating a new user: " do
         expect(page).to have_button("Add User")
       end
     end
+
+    it "creates a new user when the Add user button is clicked" do
+      first_name = "First"
+      last_name = "Last"
+      email = "email@domain.com"
+      password = "Password1!"
+
+      visit new_company_user_path(@company)
+      fill_in :first_name, with: first_name
+      fill_in :last_name, with: last_name
+      fill_in :email, with: email
+      fill_in :password, with: password
+      click_button("Add User")
+
+      expect(current_path).to eq(company_path(@company))
+
+      within(".users") do
+        expect(page).to have_content("#{last_name}, #{first_name}")
+      end
+    end
   end
 end
