@@ -32,6 +32,7 @@ RSpec.describe "Creating a new user: " do
         expect(page).to have_field(:last_name)
         expect(page).to have_field(:email)
         expect(page).to have_field(:password)
+        expect(page).to have_button("Add User")
       end
     end
   end
