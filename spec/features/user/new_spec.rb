@@ -51,6 +51,8 @@ RSpec.describe "Creating a new user: " do
 
       expect(current_path).to eq(company_path(@company))
 
+      expect(page).to have_content("New user created successfully.")
+
       within(".users") do
         expect(page).to have_content("#{last_name}, #{first_name}")
       end

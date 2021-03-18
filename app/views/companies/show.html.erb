@@ -1,3 +1,11 @@
 <header>
   <%= button_to "Add User", new_company_user_path(@company), method: :get %>
 </header>
+
+<div class="users">
+  <% @company.users.each do |user| %>
+    <div id="user-<%= user.id %>">
+      <p><%= "#{user.last_name}, #{user.first_name}" %></p>
+    </div>
+  <% end %>
+</div>
