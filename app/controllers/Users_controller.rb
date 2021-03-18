@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :find_company, only: [:new, :create]
 
   def create
-    User.create!(user_params)
+    user = user_params
+    user[:email] = user[:email].downcase
+    User.create!(user)
     flash[:success] = "New user created successfully."
     redirect_to company_path(@company)
   end
