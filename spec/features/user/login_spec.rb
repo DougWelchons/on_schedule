@@ -12,5 +12,13 @@ RSpec.describe "User Login:" do
 
       expect(page).to have_button("Login")
     end
+
+    it "takes me to a login page when I click the 'login' button" do
+      visit root_path
+
+      click_button("Login")
+
+      expect(current_path).to eq(login_path)
+    end
   end
 end
