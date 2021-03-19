@@ -22,7 +22,7 @@ RSpec.describe "User Login:" do
     end
   end
 
-  describe "when i visit the login page it" do
+  describe "when I visit the login page it" do
     it "has a login form" do
       visit login_path
 
@@ -33,14 +33,25 @@ RSpec.describe "User Login:" do
       end
     end
 
-    it "logs me in with valid info" do
+    it "logs me in if I have valid info" do
       visit login_path
 
       fill_in :email, with: @user.email
       fill_in :password, with: @user.password
       click_button("Login")
 
-      expect(current_path).to eq(user_path(@user))
+      expect(current_path).to eq(company_user_path(@company, @user))
+    end
+
+    it "won't log me in if my password is inncorect" do
+      visit login_path
+
+      fill_in :email, with: @user.email
+      fill_in :password, with: "WrongPassword"
+      click_button("Login")
+
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content("Invalid Email or Password")
     end
   end
 end

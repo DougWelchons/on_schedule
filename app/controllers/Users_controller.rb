@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :find_company, only: [:new, :create]
 
+  def show
+  end
+
   def create
     user = user_params
     user[:email] = user[:email].downcase
@@ -10,7 +13,17 @@ class UsersController < ApplicationController
   end
 
   def login_form
+  end
 
+  def login
+    @user = User.find_by(email: params[:email])
+
+    if @user.authenticate(params[:password])
+      redirect_to(company_user_path(@user.company, @user))
+    else
+      flash.now[:error] = "Invalid Email or Password"
+      render :login_form
+    end
   end
 
   private
