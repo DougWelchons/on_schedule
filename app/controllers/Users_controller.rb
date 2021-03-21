@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   before_action :find_company, only: [:new, :create]
 
   def show
+    @user = User.find(session[:user]["id"])
+    if @user.id == params[:id]
+    else
+      flash.now[:error] = "you must be logged in to vew this page"
+      render :login_form
+    end
   end
 
   def create
@@ -19,6 +25,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
 
     if @user.authenticate(params[:password])
+      session[:user] = @user
       redirect_to(company_user_path(@user.company, @user))
     else
       flash.now[:error] = "Invalid Email or Password"
