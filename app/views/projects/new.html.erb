@@ -1,0 +1,10 @@
+<h1><%= current_company.name %> New Project</h1>
+
+<section class="new_project_form">
+  <%= form_with url: company_projects_path, method: :post, local: true do |form| %>
+    <%= form.text_field :name %>
+    <%= form.date_field :start_date %>
+    <%= form.date_field :end_date %>
+    <%= form.submit "Create Project" %>
+  <% end %>
+</section>

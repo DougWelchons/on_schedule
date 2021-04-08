@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
     if @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      session[:company_id] = @user.company_id
       redirect_to(company_user_path(@user.company, @user))
     else
       flash.now[:error] = "Invalid Email or Password"
