@@ -50,8 +50,8 @@ RSpec.describe "Project New Page" do
 
           project = Project.find_by(name: "New Project")
 
-          expect(ProjectUser.find_by(user_id: @user.id).project_id).to eq(project.id)
-          expect(ProjectUser.find_by(user_id: @user.id).admin?).to eq(true)
+          expect(UserProject.find_by(user_id: @user.id).project_id).to eq(project.id)
+          expect(UserProject.find_by(user_id: @user.id).admin?).to eq(true)
         end
       end
     end

@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   def create
     project = Project.new(project_params)
     if project.save
-      # create_project_user(current_user, project, "admin")
+      # create_user_project(current_user, project, "admin")
 
       redirect_to company_project_path(current_company, project)
     else
