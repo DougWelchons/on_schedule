@@ -71,3 +71,5 @@ Additional ideas and thoughts
 - sorting feature
 - PDF conversion
 - Company admin, full CRUD, and view only access levels
+- email varification/login invite
+- inter company chat

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:index, :show] do
     resources :users, only: [:new, :create, :show]
+    resources :projects, only: [:new, :create, :show]
   end
 
   get "/login", to: "users#login_form"
