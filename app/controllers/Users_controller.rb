@@ -1,14 +1,8 @@
 class UsersController < ApplicationController
-  before_action :find_company, only: [:new, :create]
+  before_action :find_company, only: [:new, :create, :show]
+  skip_before_action :require_login, only: [:new, :create, :login, :login_form]
 
-  def show
-    @user = User.find(session[:user]["id"])
-    if @user.id == params[:id]
-    else
-      flash.now[:error] = "you must be logged in to vew this page"
-      render :login_form
-    end
-  end
+  def show; end
 
   def create
     user = user_params
@@ -18,14 +12,14 @@ class UsersController < ApplicationController
     redirect_to company_path(@company)
   end
 
-  def login_form
-  end
+  def login_form; end
 
   def login
     @user = User.find_by(email: params[:email])
 
     if @user.authenticate(params[:password])
-      session[:user] = @user
+      session[:user_id] = @user.id
+      session[:company_id] = @user.company_id
       redirect_to(company_user_path(@user.company, @user))
     else
       flash.now[:error] = "Invalid Email or Password"
@@ -36,9 +30,5 @@ class UsersController < ApplicationController
   private
   def user_params
     params.permit(:email, :password, :first_name, :last_name, :company_id)
-  end
-
-  def find_company
-    @company = Company.find(params[:company_id])
   end
 end

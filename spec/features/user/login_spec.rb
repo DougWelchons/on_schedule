@@ -40,7 +40,7 @@ RSpec.describe "User Login:" do
       fill_in :password, with: @user.password
       click_button("Login")
 
-      expect(current_path).to eq(company_user_path(@company, @user))
+      expect(current_path).to eq(company_user_path(@user.company, @user))
     end
 
     it "won't log me in if my password is inncorect" do

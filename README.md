@@ -1,38 +1,15 @@
 # README
+## OnSchedule by Doug Welchons
+The intent of this project is to provide a schedule tracking tool (gantt chart) for construction projects
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-The intent of this project is to provide a schedule tracking tool for construction projects
-basic tasks that it needs to capture as part of the core features are:
+Basic tasks that it needs to capture as part of the core features are:
 
 * creation of a new project which will include (at the project level) the following information
     * start date
     * estimated end date
     * work week (5/8's(M-F), 4/10's(M-Th or Tu-F) etc.)
     * any observed holidays that will not be considered working days
-* creation of tasks within a project that has the following information base on type
+* creation of tasks within a project that has the following information based on type
     * Type - Internal Task (a task the company needs to complete)
         * Title
         * start date
@@ -67,7 +44,10 @@ The following information should be available within the project show page
 
 
 Additional ideas and thoughts
+- task groupings
 - add task linking
 - sorting feature
 - PDF conversion
 - Company admin, full CRUD, and view only access levels
+- email varification/login invite
+- intra company chat
