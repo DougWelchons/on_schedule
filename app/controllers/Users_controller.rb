@@ -1,13 +1,8 @@
 class UsersController < ApplicationController
   before_action :find_company, only: [:new, :create, :show]
+  skip_before_action :require_login, only: [:new, :create, :login, :login_form]
 
-  def show
-    # require "pry"; binding.pry
-    unless current_user && belongs_to_company?
-      flash[:error] = "you must be logged in to vew this page"
-      redirect_to login_path
-    end
-  end
+  def show; end
 
   def create
     user = user_params
@@ -17,8 +12,7 @@ class UsersController < ApplicationController
     redirect_to company_path(@company)
   end
 
-  def login_form
-  end
+  def login_form; end
 
   def login
     @user = User.find_by(email: params[:email])

@@ -13,8 +13,8 @@ class ProjectsController < ApplicationController
 
       redirect_to company_project_path(current_company, project)
     else
-      flash.now(error: "Unable to create project")
-      render new_company_project_path(current_company)
+      flash.now[:error] = "Unable to create project"
+      render "projects/new"
     end
   end
 
